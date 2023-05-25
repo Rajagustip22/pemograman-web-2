@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ForminputController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +48,8 @@ Route::POST('/hasil',[FormController::class, 'hasil']);
 
 Route::get('/tugasform',[ForminputController::class, 'index']);
 Route::POST('/tugashasil',[ForminputController::class, 'tugashasil']);
+
+Route::prefix('admin')->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/produk', [ProdukController::class, 'index']);
+});
